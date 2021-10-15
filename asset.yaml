@@ -1073,7 +1073,7 @@ metadata:
 spec:
   description: All exploring posts and users are served via this function.
   language: javascript
-  timeout: 51.4
+  timeout: 51
   environment:
     - name: USERS_BUCKET
       valueFrom:
@@ -1127,23 +1127,23 @@ spec:
   timeout: 61
   environment:
     - name: PROJECT_ID
-      value:
+      value: ""
     - name: PRIVATE_KEY_ID
-      value:
+      value: ""
     - name: PRIVATE_KEY
-      value:
+      value: ""
     - name: CLIENT_EMAIL
-      value:
+      value: ""
     - name: CLIENT_ID
-      value:
+      value: ""
     - name: AUTH_URI
-      value:
+      value: ""
     - name: TOKEN_URI
-      value:
+      value: ""
     - name: AUTH_PROVIDER_X509_CERT_URL
-      value:
+      value: ""
     - name: CLIENT_X509_CERT_URL
-      value:
+      value: ""
   dependency:
     - name: firebase-admin
       version: ^9.11.1
@@ -1161,7 +1161,7 @@ metadata:
 spec:
   description: auth operation
   language: javascript
-  timeout: 120.6
+  timeout: 120
   environment:
     - name: IDENTITIY_SECRET_KEY
       valueFrom:
@@ -1176,7 +1176,7 @@ spec:
         resourceFieldRef:
           schemaName: user-bucket
     - name: USER_POLICY_ID
-      value:
+      value: ""
     - name: LIKED_BUCKET_ID
       valueFrom:
         resourceFieldRef:
@@ -1421,6 +1421,7 @@ kind: Function
 metadata:
   name: name-change-operations-function
 spec:
+  description: Set
   language: javascript
   timeout: 62
   environment:
@@ -1571,7 +1572,7 @@ spec:
   func: sendnotification-function
   scheduleOptions:
     timezone: Europe/Istanbul
-    frequency: "* * * * *"
+    cronSpec: "* * * * *"
 ---
 # TRIGGER - deletePost
 apiVersion: function/v1
@@ -1763,7 +1764,7 @@ spec:
   func: notification-gateway-function
   scheduleOptions:
     timezone: Europe/Istanbul
-    frequency: 0 * * * *
+    cronSpec: "0 * * * *"
 ---
 # TRIGGER - notificationsOnWaitingRequest
 apiVersion: function/v1
