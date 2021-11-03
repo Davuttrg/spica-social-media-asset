@@ -210,16 +210,6 @@ spec:
       options:
         position: bottom
       default: :created_at
-    language:
-      type: string
-      title: language
-      description: Description of the language input
-      options:
-        position: bottom
-      enum:
-        - en
-        - tr
-        - ru
     notification:
       type: boolean
       title: notification
