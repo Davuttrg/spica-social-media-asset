@@ -292,16 +292,6 @@ spec:
       bucket:
         resourceFieldRef:
           schemaName: user-bucket
-    visibility:
-      type: string
-      title: visibility
-      description: Description of the visibility input
-      options:
-        position: right
-      enum:
-        - public
-        - tagged_users
-      default: public
     created_at:
       type: date
       title: created_at
