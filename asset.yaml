@@ -2,7 +2,7 @@
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: activity-bucket
+  name: spica-social-media-asset-activity-bucket
 spec:
   title: Activity
   description: Describe your new bucket
@@ -35,7 +35,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     user:
       type: relation
       title: user
@@ -47,7 +47,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     post:
       type: relation
       title: post
@@ -59,7 +59,7 @@ spec:
       primary: text
       bucket:
         resourceFieldRef:
-          schemaName: post-bucket
+          schemaName: spica-social-media-asset-post-bucket
     metadata:
       type: string
       title: metadata
@@ -82,7 +82,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: user-bucket
+  name: spica-social-media-asset-user-bucket
 spec:
   title: User
   description: Describe your new bucket
@@ -176,7 +176,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: post-bucket
+  name: spica-social-media-asset-post-bucket
 spec:
   title: Post
   description: Describe your new bucket
@@ -202,7 +202,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     tags:
       type: relation
       title: tags
@@ -214,7 +214,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     created_at:
       type: date
       title: created_at
@@ -249,7 +249,7 @@ spec:
       primary: hashtag
       bucket:
         resourceFieldRef:
-          schemaName: hashtag-bucket
+          schemaName: spica-social-media-asset-hashtag-bucket
     file:
       type: object
       title: file
@@ -283,7 +283,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: waiting-request-bucket
+  name: spica-social-media-asset-waiting-request-bucket
 spec:
   title: Waiting Request
   description: Describe your new bucket
@@ -309,7 +309,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     reciever:
       type: relation
       title: reciever
@@ -321,7 +321,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     created_at:
       type: date
       title: created_at
@@ -338,7 +338,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: blocked-user-bucket
+  name: spica-social-media-asset-blocked-user-bucket
 spec:
   title: Blocked User
   description: Describe your new bucket
@@ -364,7 +364,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     blocked:
       type: relation
       title: blocked
@@ -376,7 +376,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     created_at:
       type: date
       title: created_at
@@ -393,7 +393,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: liked-post-bucket
+  name: spica-social-media-asset-liked-post-bucket
 spec:
   title: Liked Post
   description: Describe your new bucket
@@ -419,7 +419,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     post:
       type: relation
       title: post
@@ -430,7 +430,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: post-bucket
+          schemaName: spica-social-media-asset-post-bucket
     created_at:
       type: date
       title: created_at
@@ -447,7 +447,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: follower-&-following-bucket
+  name: spica-social-media-asset-follower-&-following-bucket
 spec:
   title: Follower & Following
   description: Describe your new bucket
@@ -472,7 +472,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     following:
       type: relation
       title: following
@@ -483,7 +483,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     date:
       type: date
       title: date
@@ -500,7 +500,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: chat-bucket
+  name: spica-social-media-asset-chat-bucket
 spec:
   title: Chat
   description: Describe your new bucket
@@ -549,7 +549,7 @@ spec:
             dependent: false
             bucket:
               resourceFieldRef:
-                schemaName: user-bucket
+                schemaName: spica-social-media-asset-user-bucket
           unread_messages_count:
             type: number
             title: unread_messages_count
@@ -591,7 +591,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     is_group:
       type: boolean
       title: is_group
@@ -615,7 +615,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
   acl:
     write: true==true
     read: true==true
@@ -625,7 +625,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: message-bucket
+  name: spica-social-media-asset-message-bucket
 spec:
   title: Message
   description: Describe your new bucket
@@ -658,7 +658,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     chat:
       type: relation
       title: chat
@@ -670,7 +670,7 @@ spec:
       primary: name
       bucket:
         resourceFieldRef:
-          schemaName: chat-bucket
+          schemaName: spica-social-media-asset-chat-bucket
     image:
       type: storage
       title: image
@@ -687,7 +687,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: post-bucket
+          schemaName: spica-social-media-asset-post-bucket
   acl:
     write: true==true
     read: true==true
@@ -697,7 +697,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: comment-bucket
+  name: spica-social-media-asset-comment-bucket
 spec:
   title: Comment
   description: Describe your new bucket
@@ -723,7 +723,7 @@ spec:
       primary: text
       bucket:
         resourceFieldRef:
-          schemaName: post-bucket
+          schemaName: spica-social-media-asset-post-bucket
     user:
       type: relation
       title: user
@@ -735,7 +735,7 @@ spec:
       primary: username
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     date:
       type: date
       title: date
@@ -753,7 +753,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: hashtag-bucket
+          schemaName: spica-social-media-asset-hashtag-bucket
     tags:
       type: relation
       title: tags
@@ -764,7 +764,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
   acl:
     write: true==true
     read: true==true
@@ -774,7 +774,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: hashtag-bucket
+  name: spica-social-media-asset-hashtag-bucket
 spec:
   title: Hashtag
   description: Describe your new bucket
@@ -813,7 +813,7 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: reported-post-bucket
+  name: spica-social-media-asset-reported-post-bucket
 spec:
   title: Reported Post
   description: Describe your new bucket
@@ -838,7 +838,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: user-bucket
+          schemaName: spica-social-media-asset-user-bucket
     post:
       type: relation
       title: post
@@ -849,7 +849,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: post-bucket
+          schemaName: spica-social-media-asset-post-bucket
     created_at:
       type: date
       title: created_at
@@ -866,7 +866,7 @@ spec:
 apiVersion: function/v1
 kind: Function
 metadata:
-  name: exploring-facade-function
+  name: spica-social-media-asset-exploring-facade-function
 spec:
   description: All exploring posts and users are served via this function.
   language: javascript
@@ -890,7 +890,7 @@ spec:
     - name: "@spica-devkit/identity"
       version: ^0.9.12
   title: Exploring Facade
-  code: ./function/exploring-facade-function.js
+  code: ./function/spica-social-media-asset-exploring-facade-function.js
   runtime:
     name: Node
     language: Javascript
@@ -899,7 +899,7 @@ spec:
 apiVersion: function/v1
 kind: Function
 metadata:
-  name: authorization-function
+  name: spica-social-media-asset-authorization-function
 spec:
   description: auth operation
   language: javascript
@@ -917,7 +917,7 @@ spec:
     - name: "@spica-devkit/identity"
       version: ^0.9.12
   title: Authorization
-  code: ./function/authorization-function.js
+  code: ./function/spica-social-media-asset-authorization-function.js
   runtime:
     name: Node
     language: Javascript
@@ -926,7 +926,7 @@ spec:
 apiVersion: function/v1
 kind: Function
 metadata:
-  name: post-operations-function
+  name: spica-social-media-asset-post-operations-function
 spec:
   description: post crud
   language: javascript
@@ -946,7 +946,7 @@ spec:
     - name: "@spica-devkit/database"
       version: ^0.9.12
   title: Post Operations
-  code: ./function/post-operations-function.js
+  code: ./function/spica-social-media-asset-post-operations-function.js
   runtime:
     name: Node
     language: Javascript
@@ -955,7 +955,7 @@ spec:
 apiVersion: function/v1
 kind: Function
 metadata:
-  name: user-online-function
+  name: spica-social-media-asset-user-online-function
 spec:
   description: Sets user online in user bucket and chat bucket
   language: javascript
@@ -975,7 +975,7 @@ spec:
     - name: "@spica-devkit/identity"
       version: ^0.9.12
   title: User Online
-  code: ./function/user-online-function.js
+  code: ./function/spica-social-media-asset-user-online-function.js
   runtime:
     name: Node
     language: Javascript
@@ -984,7 +984,7 @@ spec:
 apiVersion: function/v1
 kind: Function
 metadata:
-  name: name-change-operations-function
+  name: spica-social-media-asset-name-change-operations-function
 spec:
   description: Set
   language: javascript
@@ -1006,7 +1006,7 @@ spec:
     - name: "@spica-devkit/identity"
       version: ^0.9.12
   title: Name Change Operations
-  code: ./function/name-change-operations-function.js
+  code: ./function/spica-social-media-asset-name-change-operations-function.js
   runtime:
     name: Node
     language: Javascript
@@ -1020,7 +1020,7 @@ spec:
   active: true
   type: http
   name: explorePosts
-  func: exploring-facade-function
+  func: spica-social-media-asset-exploring-facade-function
   httpOptions:
     method: Get
     path: /getExplorePosts
@@ -1034,7 +1034,7 @@ spec:
   active: true
   type: http
   name: register
-  func: authorization-function
+  func: spica-social-media-asset-authorization-function
   httpOptions:
     method: Post
     path: /register
@@ -1048,11 +1048,11 @@ spec:
   active: true
   type: bucket
   name: deletePost
-  func: post-operations-function
+  func: spica-social-media-asset-post-operations-function
   bucketOptions:
     bucket:
       resourceFieldRef:
-        schemaName: post-bucket
+        schemaName: spica-social-media-asset-post-bucket
     type: DELETE
 ---
 # TRIGGER - decreaseLikeCount
@@ -1064,26 +1064,12 @@ spec:
   active: true
   type: bucket
   name: decreaseLikeCount
-  func: post-operations-function
+  func: spica-social-media-asset-post-operations-function
   bucketOptions:
     bucket:
       resourceFieldRef:
-        schemaName: liked-post-bucket
+        schemaName: spica-social-media-asset-liked-post-bucket
     type: DELETE
----
-# TRIGGER - increaseLikeCount
-apiVersion: function/v1
-kind: Trigger
-metadata:
-  name: increaseLikeCount
-spec:
-  active: true
-  type: database
-  name: increaseLikeCount
-  func: post-operations-function
-  databaseOptions:
-    type: INSERT
-    collection: bucket_618127c5b0ba86002e5d6327
 ---
 # TRIGGER - decreaseCommentCount
 apiVersion: function/v1
@@ -1094,26 +1080,12 @@ spec:
   active: true
   type: bucket
   name: decreaseCommentCount
-  func: post-operations-function
+  func: spica-social-media-asset-post-operations-function
   bucketOptions:
     bucket:
       resourceFieldRef:
-        schemaName: comment-bucket
+        schemaName: spica-social-media-asset-comment-bucket
     type: DELETE
----
-# TRIGGER - increaseCommentCount
-apiVersion: function/v1
-kind: Trigger
-metadata:
-  name: increaseCommentCount
-spec:
-  active: true
-  type: database
-  name: increaseCommentCount
-  func: post-operations-function
-  databaseOptions:
-    type: INSERT
-    collection: bucket_618127cab0ba86002e5d6336
 ---
 # TRIGGER - default
 apiVersion: function/v1
@@ -1124,7 +1096,7 @@ spec:
   active: true
   type: http
   name: default
-  func: user-online-function
+  func: spica-social-media-asset-user-online-function
   httpOptions:
     method: Post
     path: /online
@@ -1138,11 +1110,11 @@ spec:
   active: true
   type: bucket
   name: onUserNameChanged
-  func: name-change-operations-function
+  func: spica-social-media-asset-name-change-operations-function
   bucketOptions:
     bucket:
       resourceFieldRef:
-        schemaName: user-bucket
+        schemaName: spica-social-media-asset-user-bucket
     type: UPDATE
 ---
 # TRIGGER - blockUser
@@ -1154,9 +1126,9 @@ spec:
   active: true
   type: bucket
   name: blockUser
-  func: name-change-operations-function
+  func: spica-social-media-asset-name-change-operations-function
   bucketOptions:
     bucket:
       resourceFieldRef:
-        schemaName: blocked-user-bucket
+        schemaName: spica-social-media-asset-blocked-user-bucket
     type: INSERT
