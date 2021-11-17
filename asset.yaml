@@ -862,6 +862,28 @@ spec:
     read: true==true
   order: 17
 ---
+# API KEY SECRET
+apiVersion: passport/v1
+kind: ApiKey
+metadata:
+  name: social-secret-apikey
+spec:
+  name: Secret Api Key For Social Media
+  policies:
+    - FunctionFullAccess
+    - BucketFullAccess
+    - IdentityFullAccess
+---
+# API KEY IDENTITY
+apiVersion: passport/v1
+kind: ApiKey
+metadata:
+  name: social-secret-identity-apikey
+spec:
+  name: Secret Api Key For Social Media
+  policies:
+    - IdentityFullAccess
+---
 # FUNCTION - Exploring Facade
 apiVersion: function/v1
 kind: Function
@@ -873,17 +895,27 @@ spec:
   timeout: 51
   environment:
     - name: USERS_BUCKET
-      value: 618127c0b0ba86002e5d631b
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-user-bucket
     - name: LIKED_BUCKET
-      value: 618127c5b0ba86002e5d6327
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-liked-post-bucket
     - name: NO_DEVKIT_DATABASE_WARNING
       value: "TRUE"
     - name: POST_BUCKET
-      value: 618127c1b0ba86002e5d631e
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-post-bucket
     - name: IDENTITY_APIKEY
-      value: fskk1akvi1el2u
+      valueFrom:
+        resourceFieldRef:
+          apiKeyName: social-secret-identity-apikey
     - name: BLOCKED_USER_BUCKET
-      value: 618127c3b0ba86002e5d6324
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-blocked-user-bucket
   dependency:
     - name: "@spica-devkit/database"
       version: ^0.9.12
@@ -906,11 +938,17 @@ spec:
   timeout: 120
   environment:
     - name: IDENTITIY_SECRET_KEY
-      value: fskk1akvi1el2u
+      valueFrom:
+        resourceFieldRef:
+          apiKeyName: social-secret-identity-apikey
     - name: SECRET_API_KEY
-      value: fskk1akvi1elv0
+      valueFrom:
+        resourceFieldRef:
+          apiKeyName: social-secret-apikey
     - name: USER_BUCKET_ID
-      value: 618127c0b0ba86002e5d631b
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-user-bucket
   dependency:
     - name: "@spica-devkit/bucket"
       version: ^0.9.12
@@ -928,20 +966,24 @@ kind: Function
 metadata:
   name: spica-social-media-asset-post-operations-function
 spec:
-  description: post crud
+  description: Post Operations
   language: javascript
   timeout: 60
   environment:
     - name: LIKED_BUCKET_ID
-      value: 618127c5b0ba86002e5d6327
-    - name: NOTIFICATION_BUCKET_ID
-      value: 618127c6b0ba86002e5d632a
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-liked-post-bucket
     - name: COMMENTS_BUCKET_ID
-      value: 618127cab0ba86002e5d6336
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-comment-bucket
     - name: NO_DEVKIT_DATABASE_WARNING
       value: "TRUE"
     - name: POSTS_BUCKET
-      value: 618127c1b0ba86002e5d631e
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-post-bucket
   dependency:
     - name: "@spica-devkit/database"
       version: ^0.9.12
@@ -962,11 +1004,17 @@ spec:
   timeout: 22
   environment:
     - name: USERS_BUCKET_ID
-      value: 618127c0b0ba86002e5d631b
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-user-bucket
     - name: CHATS_BUCKET_ID
-      value: 618127c8b0ba86002e5d6330
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-chat-bucket
     - name: IDENTITIY_SECRET_KEY
-      value: fskk1akvi1el2u
+      valueFrom:
+        resourceFieldRef:
+          apiKeyName: social-secret-identity-apikey
     - name: NO_DEVKIT_DATABASE_WARNING
       value: "TRUE"
   dependency:
@@ -993,13 +1041,21 @@ spec:
     - name: NO_DEVKIT_DATABASE_WARNING
       value: "TRUE"
     - name: POST_BUCKET
-      value: 618127c1b0ba86002e5d631e
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-post-bucket
     - name: LIKED_BUCKET_ID
-      value: 618127c5b0ba86002e5d6327
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-liked-post-bucket
     - name: ACTIVITIES_BUCKET_ID
-      value: 618127bfb0ba86002e5d6318
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-activity-bucket
     - name: IDENTITY_APIKEY
-      value: fskk1akvi1el2u
+      valueFrom:
+        resourceFieldRef:
+          apiKeyName: social-secret-identity-apikey
   dependency:
     - name: "@spica-devkit/database"
       version: ^0.9.12
