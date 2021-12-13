@@ -91,7 +91,7 @@ spec:
   readOnly: false
   history: false
   properties:
-    identity:
+    identity_id:
       type: string
       title: identity
       description: Description of the identity input
