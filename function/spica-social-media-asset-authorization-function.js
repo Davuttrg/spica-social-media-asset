@@ -28,7 +28,7 @@ export async function register(req, res) {
             console.log("user_data :", user_data)
             let user = await Bucket.data.insert(USER_BUCKET_ID, {
                 ...user_data,
-                identity: identity._id,
+                identity_id: identity._id,
             });
             return res.status(200).send({ message: "Registration successful", data: user._id });
         } else {
