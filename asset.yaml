@@ -1067,6 +1067,39 @@ spec:
     name: Node
     language: Javascript
 ---
+# FUNCTION - Activity Operations
+apiVersion: function/v1
+kind: Function
+metadata:
+  name: spica-social-media-asset-activity-operation
+spec:
+  description: Activity operation
+  language: javascript
+  timeout: 62
+  environment:
+    - name: NO_DEVKIT_DATABASE_WARNING
+      value: "TRUE"
+    - name: POSTS_BUCKET_ID
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-post-bucket
+    - name: HASHTAGS_BUCKET_ID
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-hashtag-bucket
+    - name: ACTIVITIES_BUCKET_ID
+      valueFrom:
+        resourceFieldRef:
+          schemaName: spica-social-media-asset-activity-bucket
+  dependency:
+    - name: "@spica-devkit/database"
+      version: ^0.9.12
+  title: 👍 Activity Operations
+  code: ./function/spica-social-media-asset-activity-operation.js
+  runtime:
+    name: Node
+    language: Javascript
+---
 # TRIGGER - explorePosts
 apiVersion: function/v1
 kind: Trigger
@@ -1219,4 +1252,68 @@ spec:
     bucket:
       resourceFieldRef:
         schemaName: spica-social-media-asset-blocked-user-bucket
+    type: INSERT
+---
+# TRIGGER - insertPost
+apiVersion: function/v1
+kind: Trigger
+metadata:
+  name: insertPost
+spec:
+  active: true
+  type: database
+  name: insertPost
+  func: spica-social-media-asset-activity-operation
+  databaseOptions:
+    collection:
+      resourceFieldRef:
+        schemaName: spica-social-media-asset-post-bucket
+    type: INSERT
+---
+# TRIGGER - updatePost
+apiVersion: function/v1
+kind: Trigger
+metadata:
+  name: updatePost
+spec:
+  active: true
+  type: database
+  name: updatePost
+  func: spica-social-media-asset-activity-operation
+  databaseOptions:
+    collection:
+      resourceFieldRef:
+        schemaName: spica-social-media-asset-post-bucket
+    type: UPDATE
+---
+# TRIGGER - notificationsOnFollowUser
+apiVersion: function/v1
+kind: Trigger
+metadata:
+  name: notificationsOnFollowUser
+spec:
+  active: true
+  type: database
+  name: notificationsOnFollowUser
+  func: spica-social-media-asset-activity-operation
+  databaseOptions:
+    collection:
+      resourceFieldRef:
+        schemaName: spica-social-media-asset-follow-bucket
+    type: INSERT
+---
+# TRIGGER - notificationsOnLikedPost
+apiVersion: function/v1
+kind: Trigger
+metadata:
+  name: notificationsOnLikedPost
+spec:
+  active: true
+  type: database
+  name: notificationsOnLikedPost
+  func: spica-social-media-asset-activity-operation
+  databaseOptions:
+    collection:
+      resourceFieldRef:
+        schemaName: spica-social-media-asset-liked-post-bucket
     type: INSERT

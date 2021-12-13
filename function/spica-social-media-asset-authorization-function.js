@@ -17,7 +17,7 @@ export async function register(req, res) {
         let identity = await Identity.insert({
             identifier: user_data.email,
             password: user_data.password,
-            policies: ["IdentityReadOnlyAccess","BucketFullAccess"] // --custom
+            policies: ["IdentityReadOnlyAccess", "BucketFullAccess", "StorageFullAccess"] // --custom
         }).catch(err => {
             console.log(err);
             return err;
