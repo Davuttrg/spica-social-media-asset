@@ -1143,6 +1143,38 @@ spec:
         schemaName: spica-social-media-asset-comment-bucket
     type: DELETE
 ---
+# TRIGGER - increaseLikeCount
+apiVersion: function/v1
+kind: Trigger
+metadata:
+  name: increaseLikeCount
+spec:
+  active: true
+  type: database
+  name: increaseLikeCount
+  func: spica-social-media-asset-post-operations-function
+  databaseOptions:
+    collection:
+      resourceFieldRef:
+        schemaName: spica-social-media-asset-liked-post-bucket
+    type: INSERT
+---
+# TRIGGER - increaseCommentCount
+apiVersion: function/v1
+kind: Trigger
+metadata:
+  name: increaseCommentCount
+spec:
+  active: true
+  type: database
+  name: increaseCommentCount
+  func: spica-social-media-asset-post-operations-function
+  databaseOptions:
+    collection:
+      resourceFieldRef:
+        schemaName: spica-social-media-asset-comment-bucket
+    type: INSERT
+---
 # TRIGGER - default
 apiVersion: function/v1
 kind: Trigger
