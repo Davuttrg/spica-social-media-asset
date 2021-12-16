@@ -1212,15 +1212,15 @@ spec:
 apiVersion: function/v1
 kind: Trigger
 metadata:
-  name: default
+  name: socialOnline
 spec:
   active: true
   type: http
-  name: default
+  name: socialOnline
   func: spica-social-media-asset-user-online-function
   httpOptions:
     method: Post
-    path: /online
+    path: /socialOnline
 ---
 # TRIGGER - onUserNameChanged
 apiVersion: function/v1
